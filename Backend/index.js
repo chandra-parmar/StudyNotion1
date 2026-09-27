@@ -44,7 +44,7 @@ const sectionRoutes = require('./routes/sectionRoutes')
 const subSectionRoutes = require('./routes/subSectionRoutes')
 const profileRoutes = require('./routes/profileRoutes')
 const ratingRoutes = require('./routes/ratingReviewRoutes')
-
+const paymentRoutes = require('./routes/paymentRoutes')
 
 app.use('/api/v1/auth',authRoutes)
 app.use('/api/v1/profile',profileRoutes)
@@ -53,6 +53,7 @@ app.use('/api/v1/course',courseRoutes)
 app.use('/api/v1/section',sectionRoutes)
 app.use('/api/v1/subSection',subSectionRoutes)
 app.use('/api/v1/courseRating',ratingRoutes)
+app.use('/api/v1/payment',paymentRoutes)
 
 
 app.listen(port,()=>{
