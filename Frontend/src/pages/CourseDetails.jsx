@@ -20,7 +20,9 @@ const CourseDetails = () => {
 
     const [courseData, setCourseData] = useState(null)
     const [avgReviewCount, setAverageReviewCount] = useState(0)
-    const [confirmationModal, setConfirmationModal] = useState(null)
+    const [confirmationModal , setConfirmationModal] = useState(null)
+
+  
 
     // which sections are open
     const [isActive, setActive] = useState([])
@@ -64,25 +66,25 @@ const CourseDetails = () => {
     }, [courseData])
 
 
-    // buy course
-    const handleBuyCourse = () => {
+    // // buy course
+    // const handleBuyCourse = () => {
 
-        setConfirmationModal({
+    //     setConfirmationModal({
 
-            text1: "You are not logged in",
-            text2: "Please login to purchase the course",
+    //         text1: "You are not logged in",
+    //         text2: "Please login to purchase the course",
 
-            btn1Text: "Login",
-            btn2Text: "Cancel",
+    //         btn1Text: "Login",
+    //         btn2Text: "Cancel",
 
-            btn1Handler: () => navigate("/login"),
+    //         btn1Handler: () => navigate("/login"),
 
-            btn2Handler: () =>
-                setConfirmationModal(null)
+    //         btn2Handler: () =>
+    //             setConfirmationModal(null)
 
-        })
+    //     })
 
-    }
+    // }
 
 
     // open / close section
@@ -157,8 +159,8 @@ const CourseDetails = () => {
 
                         <CourseDetailsCard
                             course={courseData.data}
-                            setConfirmationModal={setConfirmationModal}
-                            handleBuyCourse={handleBuyCourse}
+                            
+                            
                         />
 
                     </div>
