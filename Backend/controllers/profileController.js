@@ -1,6 +1,6 @@
 const Profile = require('../models/Profile')
 const User = require('../models/User')
-const Course = require('../models/Course')
+const Course = require('../models/Course') 
 const uploadImageToCloudinary = require('../utils/imageUploader')
 require('dotenv').config()
 
