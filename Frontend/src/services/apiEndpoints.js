@@ -52,3 +52,12 @@ export const subSectionEndpoints ={
     UPDATE_SUB_SECTION_API: "http://localhost:4000/api/v1/subSection/",
     DELETE_SUB_SECTION_API : "http://localhost:4000/api/v1/subSection/"
 }
+
+
+//payment api endpoints
+export const paymentApiEndpoints ={
+
+    COURSE_PAYMENT_API : "http://localhost:4000/api/v1/payment/capturePayment",
+    PAYMENT_VERIFY_API :"http://localhost:4000/api/v1/payment/verifyPayment",
+    PAYMENT_SUCCESS_EMAIL_API :"http://localhost:4000/api/v1/payment/sendPaymentSuccessEmail"
+}
