@@ -123,6 +123,13 @@ const verifyPayment = async(req,res)=>{
     const courses = req.body?.courses
     const userId = req.user.id
 
+    
+        console.log("VERIFY PAYMENT")
+        console.log("userId:", userId)
+        console.log("courses:", courses)
+        console.log("orderId:", razorpay_order_id)
+        console.log("paymentId:", razorpay_payment_id)
+
     if(!razorpay_order_id ||!razorpay_payment_id||!razorpay_signature
         ||!courses ||!userId)
         {
@@ -139,7 +146,7 @@ const verifyPayment = async(req,res)=>{
 
          if(expectedSignature === razorpay_signature)
             {
-                await enrollStudents(courses, userId)
+                await enrollStudents(courses, userId,res)
                 return res.status(200).json({
                     success:true,
                     message:"payment verifyed successfully"
@@ -156,6 +163,10 @@ const verifyPayment = async(req,res)=>{
 
 //enrolle students
 const enrollStudents = async(courses, userId)=>{
+
+     console.log("ENROLL STUDENTS")
+    console.log("userId:", userId)
+    console.log("courses:", courses)
 
     if(!courses || !userId)
     {
@@ -187,9 +198,12 @@ const enrollStudents = async(courses, userId)=>{
         // find the student and add the course to their list of enrolledcourse
         const enrolledStudent = await User.findByIdAndUpdate(userId,{
             $push:{
-                course : courseId
+                courses : courseId
             }
         }, {new:true})
+
+        console.log("ENROLLED STUDENT:", enrolledStudent)
+console.log("ENROLLED COURSES:", enrolledStudent?.courses)
 
         //send email to enroll student 
         const emailResponse = await mailSender(
