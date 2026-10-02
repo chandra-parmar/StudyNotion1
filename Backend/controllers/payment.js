@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const { instance } = require("../config/razorpay")
-const Course = require('../models/course')
+const Course = require('../models/Course')
 const User = require('../models/User')
 const mailSender = require('../utils/mailSender')
 const { courseEnrollmentEmail } = require('../mails/courseEnrollmentEmail')
@@ -124,11 +124,6 @@ const verifyPayment = async(req,res)=>{
     const userId = req.user.id
 
     
-        console.log("VERIFY PAYMENT")
-        console.log("userId:", userId)
-        console.log("courses:", courses)
-        console.log("orderId:", razorpay_order_id)
-        console.log("paymentId:", razorpay_payment_id)
 
     if(!razorpay_order_id ||!razorpay_payment_id||!razorpay_signature
         ||!courses ||!userId)
