@@ -5,6 +5,8 @@ const Category = require('../models/Category')
 const User = require('../models/User')
 const Section = require('../models/Section')
 const SubSection = require('../models/SubSection')
+const CourseProgress = require('../models/CourseProgress')
+
 
 
 //creat course
@@ -148,6 +150,7 @@ const getInstructorCourses = async(req,res)=>{
 //get full details of course
 const getFullCourseDetails= async(req,res)=>{
 
+    
     try {
     const { courseId } = req.params
     const userId = req.user.id
@@ -198,6 +201,21 @@ const getFullCourseDetails= async(req,res)=>{
         totalDurationInSeconds += timeDurationInSeconds
       })
     })
+
+    // Helper function to convert total seconds to the duration format
+    function convertSecondsToDuration(totalSeconds) {
+        const hours = Math.floor(totalSeconds / 3600)
+        const minutes = Math.floor((totalSeconds % 3600) / 60)
+        const seconds = Math.floor((totalSeconds % 3600) % 60)
+      
+        if (hours > 0) {
+          return `${hours}h ${minutes}m`
+        } else if (minutes > 0) {
+          return `${minutes}m ${seconds}s`
+        } else {
+          return `${seconds}s`
+        }
+      }
 
     const totalDuration = convertSecondsToDuration(totalDurationInSeconds)
 
