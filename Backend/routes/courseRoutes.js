@@ -13,11 +13,13 @@ router.post('/',auth,isInstructor,createCourse)
 //get all course route
 router.get('/',auth,showAllCourses)
 
+//get full course detals
+router.get('/getFullCourse/:courseId',auth, getFullCourseDetails)
+
 //get course details by id 
 router.get('/:courseId',getCourseDetails)
 
-//get full course detals
-router.get('/getFullCourse',auth,getFullCourseDetails)
+
 
 //edit course
 router.put('/',auth, isInstructor,editCourse)
