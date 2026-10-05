@@ -20,6 +20,8 @@ import AddCourse from './components/core/Dashboard/AddCourse'
 import MyCourses from './components/core/Dashboard/MyCourses'
 import Category from './pages/Category'
 import CourseDetails from './pages/CourseDetails'
+import ViewCourse from './pages/ViewCourse'
+import VideoDetails from './components/core/ViewCourse/VideoDetails'
 
 
 function App()
@@ -120,6 +122,26 @@ function App()
                    
                    
                 </Route>
+
+                {/* view course routes */}
+                <Route element={
+                    <PrivateRoute>
+                      <ViewCourse></ViewCourse>
+                    </PrivateRoute> }>
+
+                    {
+                      user?.accountType === ACCOUNT_TYPE.STUDENT && (
+                        <>
+                          <Route
+                           path='view-course/:courseId/section/:sectionId/sub-section/:subSectionId'
+                           element={<VideoDetails></VideoDetails>}
+                           >
+                            
+                          </Route>
+                        </>
+                      )
+                    }
+               </Route>
                
               
 
