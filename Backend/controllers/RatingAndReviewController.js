@@ -1,4 +1,4 @@
-const ratingAndReviews = require('../models/RatingAndReview')
+
 const Course = require('../models/Course')
 const RatingAndReview = require('../models/RatingAndReview')
 
@@ -37,7 +37,8 @@ const createRating = async(req,res)=>{
          }
         // create rating and review
         const newRatingReview = await RatingAndReview.create({
-                                      rating:review,
+                                      review:review,
+                                      rating:rating,
                                       course:courseId,
                                       user:userId
         })
@@ -64,6 +65,7 @@ const createRating = async(req,res)=>{
        return res.status(500).json({
         message:"Internal server error",
         success:false,
+        error:err
         
        })
     }
