@@ -7,6 +7,7 @@ const { courseEnrollmentEmail } = require('../mails/courseEnrollmentEmail')
 const { paymentSuccessEmail } = require("../mails/paymentSuccessEmail")
 const crypto = require('crypto')
 const Payment = require('../models/payment')
+const CourseProgress = require("../models/CourseProgress")
 
 
 
@@ -159,9 +160,7 @@ const verifyPayment = async(req,res)=>{
 //enrolle students
 const enrollStudents = async(courses, userId)=>{
 
-     console.log("ENROLL STUDENTS")
-    console.log("userId:", userId)
-    console.log("courses:", courses)
+     
 
     if(!courses || !userId)
     {
@@ -188,12 +187,20 @@ const enrollStudents = async(courses, userId)=>{
                     success:false,
                     message:"Could not found course"
                 })
-            }  
+            } 
+            
+            //coureprogress
+            const courseProgress = await CourseProgress.create({
+                courseID:courseId,
+                userId:userId,
+                completedVideos :[]
+            })
 
         // find the student and add the course to their list of enrolledcourse
         const enrolledStudent = await User.findByIdAndUpdate(userId,{
             $push:{
-                courses : courseId
+                courses : courseId,
+                courseProgress : courseProgress._id
             }
         }, {new:true})
 
