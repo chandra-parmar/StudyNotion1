@@ -22,8 +22,10 @@ export const courseEndpoints = {
   COURSE_CATEGORIES_API:  "http://localhost:4000/api/v1/category/",
   CREATE_COURSE_API:  "http://localhost:4000/api/v1/course/",
   GET_ALL_INSTRUCTOR_COURSES_API: "http://localhost:4000/api/v1/course",
-  GET_FULL_COURSE_DETAIL_API : 'http://localhost:4000/api/v1/course',
-  DELETE_COURSE_API:"http://localhost:4000/api/v1/course/"
+  GET_FULL_COURSE_DETAIL_API : 'http://localhost:4000/api/v1/course/getFullCourse',
+  DELETE_COURSE_API:"http://localhost:4000/api/v1/course/",
+  LECTURE_COMPLETION_API:"http://localhost:4000/api/v1/course/updateCourseProgress",
+  
   
  
 }
@@ -60,4 +62,11 @@ export const paymentApiEndpoints ={
     COURSE_PAYMENT_API : "http://localhost:4000/api/v1/payment/capturePayment",
     PAYMENT_VERIFY_API :"http://localhost:4000/api/v1/payment/verifyPayment",
     PAYMENT_SUCCESS_EMAIL_API :"http://localhost:4000/api/v1/payment/sendPaymentSuccessEmail"
+}
+
+
+//course rating 
+export const ratingApiEndpoints ={
+
+    CREATE_RATING_API: "http://localhost:4000/api/v1/courseRating/rating"
 }
