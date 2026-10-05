@@ -211,6 +211,20 @@ const getEnrolledCourses = async(req,res)=>{
         })
         .exec()
 
+        // course progress percentage to do 
+        // userDetails = userDetails.toObject()
+        // let SubsectionLength =0
+        // for(let i= 0; i< userDetails.courses.length ;i++)
+        // {
+        //     let totalDurationInSeconds =0
+        //     SubsectionLength =0
+        //     for(let j=0; j<userDetails.courses[i].courseContent.length;j++)
+        //     {
+        //         totalDurationInSeconds += userDetails.courses[i].courseContent[j].
+        //         subSection.reduce((acc,))
+        //     }
+        // }
+
         if(!userDetails)
         {
             return res.status(400).json({
