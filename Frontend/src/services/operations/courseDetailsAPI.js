@@ -7,7 +7,7 @@ const { COURSE_CATEGORIES_API, CREATE_COURSE_API ,EDIT_COURSE_API, GET_ALL_INSTR
 } = courseEndpoints
 const { CREATE_SECTION_API, UPDATE_SECTION_API , DELETE_SECTION_API } = sectionEndpoints
 const { CREATE_SUB_SECTION_API , UPDATE_SUB_SECTION_API, DELETE_SUB_SECTION_API }= subSectionEndpoints
-const { CREATE_RATING_API} = ratingApiEndpoints
+const { CREATE_RATING_API , REVIEWS_DETAILS_API} = ratingApiEndpoints
 
 //fetch course categories
 export const fetchCourseCategories = async () => {
@@ -409,6 +409,34 @@ export const createRating = async (data, token) => {
   let success = false
   try {
     const response = await apiConnector("POST", CREATE_RATING_API, data, {
+      Authorization: `Bearer ${token}`,
+    })
+    console.log("CREATE RATING API RESPONSE............", response)
+    if (!response?.data?.success) {
+      throw new Error("Could Not Create Rating")
+    }
+    toast.success("Rating Created")
+    success = true
+  } catch (error) {
+    success = false
+    console.log("CREATE RATING API ERROR............", error)
+    toast.error(error.message)
+  }
+  toast.dismiss(toastId)
+  return success
+}
+
+
+//get reviews 
+ 
+export const fetchAllReviews = async (token) => {
+
+  
+
+  const toastId = toast.loading("Loading...")
+  let success = false
+  try {
+    const response = await apiConnector("GET", REVIEWS_DETAILS_API,null, {
       Authorization: `Bearer ${token}`,
     })
     console.log("CREATE RATING API RESPONSE............", response)
