@@ -1,4 +1,4 @@
-
+const mongoose = require('mongoose')
 const Course = require('../models/Course')
 const RatingAndReview = require('../models/RatingAndReview')
 
@@ -72,10 +72,10 @@ const createRating = async(req,res)=>{
 }
 
 //getaveragerating
-const getAverageRating = async(req,res)=>{
+const AverageRating = async(req,res)=>{
     try{
         //get course id 
-        const courseId = req.body.courseId
+        const courseId = req.body?.courseId
 
         //calculate avg rating
         const result = await RatingAndReview.aggregate([
@@ -121,7 +121,7 @@ const getAverageRating = async(req,res)=>{
 }
 
 //getallrating
-const getAllRating = async(req,res)=>{
+const AllRating = async(req,res)=>{
     try{
        
         const allReviews = await RatingAndReview.find({})
@@ -145,18 +145,19 @@ const getAllRating = async(req,res)=>{
 
     }catch(err)
     {
-      console.error(err)
+      console.error("getall rating error",err)
       return res.status(500).json({
         success:false,
-        message:"internal server error"
+        message:"internal server error",
+        error:err
       })
     }
 }
 
 module.exports ={
     createRating,
-    getAllRating,
-    getAverageRating
+    AllRating,
+    AverageRating
 }
 
 
