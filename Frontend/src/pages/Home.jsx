@@ -16,7 +16,7 @@ import pyl from '../assets/Images/Plan_your_lessons.png'
 import cwo from '../assets/Images/Compare_with_others.png'
 import InstructorImg from '../assets/Images/Instructor.png'
 import Footer from "../components/common/Footer";
-
+import ReviewSlider from "../components/common/ReviewSlider";
 
 
 const Home = () => {
@@ -273,6 +273,7 @@ const Home = () => {
                         {/* TOD review slider */}
                         <div>
                           <h1 className="mt-11 text-center text-3xl font-bold text-white sm:text-4xl">Review from other learers</h1>
+                          <ReviewSlider></ReviewSlider>
                         </div>
 
                      
