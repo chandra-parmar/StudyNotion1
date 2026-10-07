@@ -68,5 +68,6 @@ export const paymentApiEndpoints ={
 //course rating 
 export const ratingApiEndpoints ={
 
-    CREATE_RATING_API: "http://localhost:4000/api/v1/courseRating/rating"
+    CREATE_RATING_API: "http://localhost:4000/api/v1/courseRating/rating",
+    REVIEWS_DETAILS_API :"http://localhost:4000/api/v1/courseRating/rating"
 }
