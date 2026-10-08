@@ -11,6 +11,7 @@ export const authEndpoints ={
 
 export const profileEndpoints ={
     GET_USER_ENROLLED_COURSES_API : "http://localhost:4000/api/v1/profile/enrolledCourses",
+    GET_INSTRUCTOR_DASHBOARD_API : "http://localhost:4000/api/v1/profile/instructorDashboard"
 
 }
 
