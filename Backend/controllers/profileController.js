@@ -192,7 +192,7 @@ const updateDisplayPicture = async(req,res)=>{
       })
     }
 }
-
+// user enrolled coures
 const getEnrolledCourses = async(req,res)=>{
     try{
         
@@ -248,11 +248,53 @@ const getEnrolledCourses = async(req,res)=>{
     }
 }
 
+//instructor dashboard 
+const instructorDashboard = async(req,res)=>{
+
+    const instructorId = req.user.id
+
+    try{
+
+        const courseDetails = await Course.find({instructor:instructorId})
+        
+        const courseData = courseDetails.map((course)=>{
+            const totalStudentsEnrolled = course.studentsEnrolled.length
+            const totalAmountGenerated = totalStudentsEnrolled * course.price
+
+            const courseDataWithStats ={
+                _id:course._id,
+                courseName:course.courseName,
+                courseDescription:course.courseDescription,
+                totalStudentsEnrolled,
+                totalAmountGenerated,
+                 
+            }
+            return courseDataWithStats
+            
+        })
+
+        return res.status(200).json({
+            success:true,
+            courses:courseData
+        })
+
+    }catch(err)
+    {
+        console.error(err)
+        return res.status(500).json({
+            success:false,
+            message:"Internal server error",
+            error:err
+        })
+    }
+}
+
 
 module.exports ={
     updateProfile,
     deleteAccount,
     getUserDetails,
     updateDisplayPicture,
-    getEnrolledCourses
+    getEnrolledCourses,
+    instructorDashboard
 }
