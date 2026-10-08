@@ -4,12 +4,40 @@ import { profileEndpoints } from "../apiEndpoints";
 
 const {
   GET_USER_ENROLLED_COURSES_API,
+  GET_INSTRUCTOR_DASHBOARD_API
 } = profileEndpoints;
 
 
 
 
+//getinstructor stats data
+export async function getInstructorStatsData(token)
+{
+   const toastId = toast.loading("loading....")
+   let result = []
 
+   try{
+     
+    const response = await apiConnector("GET",GET_INSTRUCTOR_DASHBOARD_API, null,
+      {
+        Authorization: `Bearer ${token}`
+      }
+    )
+
+    console.log("Get instrucotr dashboar api", response)
+
+   result = response?.data?.courses
+
+   }catch(error)
+   {
+    console.log("Get instrucotr dashboard api eror",error)
+    toast.error("Could not get instructor data")
+
+
+   }
+   toast.dismiss(toastId)
+   return result 
+}
 
 
 
