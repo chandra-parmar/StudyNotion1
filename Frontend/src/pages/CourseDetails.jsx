@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { fetchCourseDetails } from '../services/operations/courseDetailsAPI'
 import GetAvgRating from '../utils/avgRating'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import RatingStars from '../components/common/RatingStars'
 import CourseDetailsCard from '../components/core/Course/CourseDetailsCard'
 import ConfirmationModal from '../components/common/ConfirmationModal'
@@ -11,11 +11,11 @@ import CourseContent from '../components/core/Course/CourseContent'
 
 const CourseDetails = () => {
 
-    const { user } = useSelector((state) => state.profile)
-    const { token } = useSelector((state) => state.auth)
+    
+    
     const { loading } = useSelector((state) => state.profile)
 
-    const navigate = useNavigate()
+    
     const { courseId } = useParams()
 
     const [courseData, setCourseData] = useState(null)
@@ -134,7 +134,7 @@ const CourseDetails = () => {
     const {
         courseName,
         courseDescription,
-        price,
+    
         whatYouWillLearn,
         courseContent,
         ratingAndReviews,
