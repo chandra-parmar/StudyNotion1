@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useParams} from 'react-router-dom'
 import { setCourse, setEditCourse} from '../../../../reducer/slices/courseSlice'
-
+import { useState , useEffect } from "react"
+import { getFullDetailsOfCourse } from "../../../../services/operations/courseDetailsAPI"
+import RenderSteps from "../AddCourse/RenderSteps"
 
 export default function EditCourse (){
 
@@ -16,6 +18,8 @@ export default function EditCourse (){
             setLoading(true)
             const result = await getFullDetailsOfCourse(courseId, token)
 
+            console.log("courseId before API call:", courseId);
+
             if(result?.courseDetails)
             {
                 dispatch(setEditCourse(true))
@@ -23,6 +27,7 @@ export default function EditCourse (){
             }
             setLoading(false)
         }
+        populateCourseDetails()
      })
     if(loading)
     {
