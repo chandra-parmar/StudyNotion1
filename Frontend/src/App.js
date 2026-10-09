@@ -23,6 +23,7 @@ import CourseDetails from './pages/CourseDetails'
 import ViewCourse from './pages/ViewCourse'
 import VideoDetails from './components/core/ViewCourse/VideoDetails'
 import InstructorDash from './components/core/Dashboard/InstructorDashboard/InstructorDash'
+import EditCourse from './components/core/Dashboard/EditCourse'
 
 
 function App()
@@ -117,6 +118,7 @@ function App()
                       <>
                         <Route path='dashboard/add-course' element={<AddCourse></AddCourse> }></Route>
                         <Route path='dashboard/my-courses' element={<MyCourses></MyCourses>}></Route>
+                        <Route path='dashboard/edit-course/:id' element={<EditCourse></EditCourse>}></Route>
                         <Route path="dashboard/instructor-dashboard" element ={<InstructorDash></InstructorDash>}></Route>
                       </>
                     )
