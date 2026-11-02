@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import IconBtn from '../../../../common/IconBtn';
 import {MdAddCircleOutline} from "react-icons/md"
-import {BiAddToQueue} from "react-icons/bi"
+
 import { useDispatch, useSelector } from 'react-redux';
 import {BiRightArrow} from "react-icons/bi"
 import { setCourse, setEditCourse, setStep } from '../../../../../reducer/slices/courseSlice';
 import { toast } from 'react-hot-toast';
-import { createSection, updateSection , deleteSection } from '../../../../../services/operations/courseDetailsAPI';
+import { createSection, updateSection } from '../../../../../services/operations/courseDetailsAPI';
 import NestedView from './NestedView';
 
 const CourseBuilderForm = () => {

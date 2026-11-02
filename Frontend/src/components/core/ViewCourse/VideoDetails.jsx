@@ -24,7 +24,7 @@ const VideoDetails = () => {
 
     const {
         courseSectionData,
-        courseEntireData,
+        
         completedLectures
     } = useSelector((state) => state.viewCourse)
 

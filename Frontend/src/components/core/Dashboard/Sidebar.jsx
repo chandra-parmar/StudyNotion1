@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { sidebarLinks } from '../../../data/dashboard-links'
 import { logout } from '../../../services/operations/authAPI'
-import { IoSettingsOutline } from "react-icons/io5";
+
 import { VscSignOut } from "react-icons/vsc";
 import ConfirmationModal from '../../common/ConfirmationModal';
 import { useDispatch, useSelector } from 'react-redux';
