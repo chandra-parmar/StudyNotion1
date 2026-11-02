@@ -2,10 +2,6 @@
 /node_modules
 
 # Frontend
-Frontend/build/
-Frontend/node_modules/
-Frontend/.env
+/build
 
-# Backend
-Backend/node_modules/
-Backend/.env
+
