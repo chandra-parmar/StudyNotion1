@@ -21,7 +21,7 @@ const PublishCourse = () => {
         {
             setValue('public',true)
         }
-    },[])
+    })
 
     const goToCourses = ()=>{
         dispatch(resetCourseState())
