@@ -28,34 +28,37 @@ const PublishCourse = () => {
         //navigate to dashboard my course
     }
 
-    const handleCoursePublish= async()=>{
-        if(course?.status === COURSE_STATUS.PUBLISHED && getValues("public") === true ||
-    (course.status === COURSE_STATUS.DRAFT && getValues('public') === false))
-        {
-            // no updation in form 
-
-            //no need to make api call
-            goToCourses()
-            return 
-        }
-       
-        //if form is updated
-        const formData = new FormData()
-        formData.append('courseId',course._id)
-        const courseStatus = getValues("public") ? COURSE_STATUS.PUBLISHED : COURSE_STATUS.DRAFT
-        formData.append("status", courseStatus)
-
-        setLoading(false)
-        const result = await editCourseDetails(formData, token)
-
-        if(result)
-        {
-            goToCourses()
-        }
-
-        setLoading(false)
-
+    const handleCoursePublish = async () => {
+    if (
+        (course?.status === COURSE_STATUS.PUBLISHED && getValues("public") === true) ||
+        (course?.status === COURSE_STATUS.DRAFT && getValues("public") === false)
+    ) {
+        // No updation in form
+        // No need to make API call
+        goToCourses()
+        return
     }
+
+    // If form is updated
+    const formData = new FormData()
+    formData.append("courseId", course._id)
+
+    const courseStatus = getValues("public")
+        ? COURSE_STATUS.PUBLISHED
+        : COURSE_STATUS.DRAFT
+
+    formData.append("status", courseStatus)
+
+    setLoading(false)
+    const result = await editCourseDetails(formData, token)
+
+    if (result) {
+        goToCourses()
+    }
+
+    setLoading(false)
+     }
+     
     const onSubmit = ()=>{
         handleCoursePublish()
 
