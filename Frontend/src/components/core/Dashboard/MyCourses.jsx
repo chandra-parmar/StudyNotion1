@@ -25,7 +25,7 @@ const MyCourses = ()=>{
         }
         fetchCourses()
 
-    },[])
+    },[token])
 
 
     return(
