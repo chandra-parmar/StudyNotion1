@@ -22,7 +22,10 @@ dbConnect()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-           origin:"http://localhost:3000",
+           origin:["http://localhost:3000",
+                "http://3.104.124.142"
+           ],
+
            credentials:true
         }))
 //for fileupload image video
